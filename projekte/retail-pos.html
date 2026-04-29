@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Music Sequencer Interface — Blender and interface project." />
+  <title>Music Sequencer Interface — Lara Rivers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="page-case">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="logo" href="../index.html" aria-label="Henriette Finzel — Home">
+        <span class="logo-name">Henriette Finzel</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="case-back">
+      <a class="case-back-link" href="../index.html#projects">← Back to project overview</a>
+    </div>
+
+    <div class="case-layout reveal is-visible" data-reveal>
+      <header class="case-intro">
+        <h1 class="case-title">Music Sequencer Interface</h1>
+        <p class="case-subline">An intuitive sequencer interface for beginners in beat and melody arrangement</p>
+        <div class="case-body case-prose">
+          <figure class="case-feature-media">
+            <span class="project-preview project-preview--d" role="img" aria-label="Music sequencer preview"></span>
+          </figure>
+          <p class="case-caption">Interface design combined with 3D visualization and physical prototyping</p>
+        </div>
+      </header>
+
+      <div class="case-body case-intro-text">
+        <p>The project explores how sequencing can be made approachable for first-time users while keeping enough depth for playful arrangement. The concept combines interface design, physical interaction, and Blender-based visualization in one coherent product direction.</p>
+      </div>
+    </div>
+
+    <section class="case-section reveal" id="uebersicht" aria-labelledby="h-uebersicht" data-reveal>
+      <h2 id="h-uebersicht" class="case-section-title">Overview</h2>
+      <h3 class="case-subtitle">Concept idea and interaction model</h3>
+      <div class="case-body case-prose">
+        <p>The interface is structured as a classic step sequencer: tone tracks on the left, a large illuminated drum pad on the right, and global controls for loop playback and sound behavior. Users can play drum patterns live, combine predefined melodies, and arrange layers in a continuous loop.</p>
+        <p>The guiding concept emphasizes visual clarity through clean area separation and proximity-based grouping, so users immediately understand where to edit tracks, trigger drums, and control transport.</p>
+        <figure class="case-feature-media">
+          <span class="project-preview project-preview--d" role="img" aria-label="Sequencer functions and drum pad focus"></span>
+        </figure>
+        <p class="case-caption">Functional structure: tracks, melody controls, transport, and illuminated drum pad</p>
+      </div>
+    </section>
+
+    <section class="case-section reveal" id="prozess" aria-labelledby="h-prozess" data-reveal>
+      <h2 id="h-prozess" class="case-section-title">Process</h2>
+      <h3 class="case-subtitle">Predefined goals, constraints, and test learnings</h3>
+      <div class="case-body case-prose">
+        <p>Before execution, we defined clear goals: beginner-friendly onboarding into sequencing, understandable state feedback, and a logical navigation order (select track, select sound, then play). Another fixed requirement was a visually calm interface that still makes active states obvious.</p>
+        <p>A mid-fidelity wooden prototype connected to GarageBand was used to test interactions early. The main struggles were unclear melody state switching, missing per-track mute behavior, and navigation ambiguity. These findings led to stronger status indicators, push-to-mute integration in pitch control, and clearer icon hierarchy.</p>
+        <figure class="case-feature-media">
+          <span class="project-preview project-preview--c" role="img" aria-label="Mid-fidelity prototype and user test learnings"></span>
+        </figure>
+        <p class="case-caption">Prototype validation and the key adjustments derived from user tests</p>
+      </div>
+    </section>
+
+    <section class="case-section reveal" id="ergebnis" aria-labelledby="h-ergebnis" data-reveal>
+      <h2 id="h-ergebnis" class="case-section-title">Outcome</h2>
+      <h3 class="case-subtitle">Final build and component set</h3>
+      <div class="case-body case-prose">
+        <figure class="case-feature-media">
+          <span class="project-preview project-preview--b" role="img" aria-label="Prototype to final render transition"></span>
+        </figure>
+        <p class="case-caption">From flat wireframe and physical prototype to final 3D rendered interface</p>
+        <p>The final outcome consists of a functioning mid-fidelity prototype and a fully rendered high-fidelity interface system in Blender. Core components include editable tone tracks, melody lanes, drum type buttons, a large glowing drum pad, transport controls, progress LEDs, and global parameter sliders.</p>
+        <p>The visual design system uses a dark panel base with focused light accents, rounded-flat controls, and high-contrast iconography to keep operation clear without visual overload. The pipeline from Illustrator layout to Blender model and render enabled both structural precision and realistic product communication.</p>
+        <p>Result summary: a playable sequencer concept with validated beginner usability and production-quality render output for presentation and further development.</p>
+      </div>
+    </section>
+
+    <section class="case-project-meta reveal" data-reveal aria-label="Project details">
+      <dl class="case-meta">
+        <div class="case-meta-group">
+          <dt class="case-meta-label">Timeline</dt>
+          <dd class="case-meta-value">October 2024 - January 2025</dd>
+        </div>
+        <div class="case-meta-group">
+          <dt class="case-meta-label">Team</dt>
+          <dd class="case-meta-value">Solo project</dd>
+        </div>
+        <div class="case-meta-group">
+          <dt class="case-meta-label">Tags</dt>
+          <dd class="case-meta-value">
+            <div class="case-tags">
+              <span class="case-tag">Interface Design</span>
+              <span class="case-tag">Prototyping</span>
+              <span class="case-tag">Physical Computing</span>
+            </div>
+          </dd>
+        </div>
+        <div class="case-meta-group">
+          <dt class="case-meta-label">Tools</dt>
+          <dd class="case-meta-value">
+            <div class="case-tags">
+              <span class="case-tag">Illustrator</span>
+              <span class="case-tag">Blender</span>
+              <span class="case-tag">GarageBand</span>
+              <span class="case-tag">Physical Prototype</span>
+            </div>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="case-footer-nav">
+      <a class="btn btn-ghost" href="service-blueprint.html">Previous project</a>
+      <a class="btn btn-primary" href="chatgpt-redesign.html">Next project</a>
+    </div>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
