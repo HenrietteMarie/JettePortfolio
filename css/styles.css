@@ -2114,10 +2114,3 @@ img {
 .contact-widget:hover .contact-widget-value {
   color: var(--accent);
 }
-
-.footer-note {
-  margin-top: var(--space-xl);
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  text-align: left;
-}
