@@ -1,4 +1,4 @@
-/* —— Lara Rivers — Interaction Design Portfolio —— */
+/* —— Henriette Finzel — Interaction Design Portfolio —— */
 
 :root {
   --bg: #ffffff;
@@ -10,7 +10,7 @@
   --border: rgba(0, 0, 0, 0.08);
   --grid-max: 1120px;
   --narrow-max: 720px;
-  /* Seitenrand; Inhaltsblock ist zentriert, Text darin linksbündig */
+  /* Page margins; content block centered, text left-aligned inside */
   --page-gutter: clamp(1rem, 4vw, 2.25rem);
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -18,7 +18,7 @@
   --space-lg: 2.5rem;
   --space-xl: 4rem;
   --space-2xl: 6rem;
-  /* Case studies: Bild↔Caption eng, danach großer Abstand wie Referenzlayout */
+  /* Case studies: tight image↔caption gap, then larger gap to next block (reference layout) */
   --case-media-caption-gap: 0.25rem;
   --case-caption-to-next: var(--space-xl);
   --case-body-font-size: 1.08rem;
@@ -33,12 +33,13 @@
 }
 
 /*
- * ——— Smartphone vs. Desktop / Laptop (Breakpoints) ———
- * · Smartphone / enge Phones:  (max-width: 767px) — Burger-Menü, gestapeltes Hero, größere Tap-Flächen, Case-Footer.
- * · Ab Tablet-Breite:           (min-width: 768px) — horizontale Hauptnavigation, About-Collage mit Hover-Clustern.
- * · „Desktop“-Layout:           (min-width: 900px) — zweispaltiges Hero, Projektabstände, Case-Layout, Sektions-Tuning.
- * · Hero unter 900px Breite:   (max-width: 899px) — gleiche vertikale Reihenfolge wie auf dem Phone (display:contents + order).
- * Mobil: viewport meta mit viewport-fit=cover + interactive-widget=resizes-content; CSS nutzt env(safe-area-*) und 100dvh.
+ * ——— Breakpoints: phone vs. desktop / laptop ———
+ * · Phones / narrow viewports: (max-width: 767px) — burger menu, stacked hero, larger tap targets, case footer.
+ * · From tablet width:          (min-width: 768px) — horizontal main nav, About collage hover clusters.
+ * · “Desktop” layout:            (min-width: 900px) — two-column hero, project spacing, case layout, section tuning.
+ * · Hero below 900px width:     (max-width: 899px) — same vertical order as phone (display:contents + order).
+ * Mobile: viewport meta with viewport-fit=cover + interactive-widget=resizes-content; CSS uses env(safe-area-*) and 100dvh.
+ * Page background on html (not body); on mobile background-attachment: scroll — continuous, no “section banding”.
  */
 
 *,
@@ -51,11 +52,22 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  min-height: 100%;
+  /* Page background on html: full scroll height (esp. iOS/WebKit); content stacks above */
+  background-color: #f3f9ff;
+  background-image:
+    radial-gradient(64rem 46rem at -12% 88%, rgba(96, 175, 255, 0.5), transparent 63%),
+    radial-gradient(56rem 40rem at 108% 10%, rgba(120, 196, 255, 0.44), transparent 61%),
+    linear-gradient(180deg, #fcfeff 0%, #f3f9ff 100%);
+  background-attachment: fixed;
+  background-size: 120% 120%;
+  animation: site-blue-drift 20s ease-in-out infinite alternate;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+    animation: none;
   }
 
   *,
@@ -73,13 +85,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--text);
-  background:
-    radial-gradient(64rem 46rem at -12% 88%, rgba(96, 175, 255, 0.5), transparent 63%),
-    radial-gradient(56rem 40rem at 108% 10%, rgba(120, 196, 255, 0.44), transparent 61%),
-    linear-gradient(180deg, #fcfeff 0%, #f3f9ff 100%);
-  background-attachment: fixed;
-  background-size: 120% 120%;
-  animation: site-blue-drift 20s ease-in-out infinite alternate;
+  background: transparent;
   -webkit-font-smoothing: antialiased;
   text-align: left;
 }
@@ -334,7 +340,7 @@ img {
   padding: var(--space-2xl) 0;
 }
 
-/* Abstand Hero → Projects; −1cm zieht den gesamten unteren Seitenbereich etwas nach oben */
+/* Space hero → projects; −1cm pulls the lower page block slightly up */
 .section-projects {
   padding-top: max(0.75rem, calc(var(--space-xl) - 1cm));
 }
@@ -345,7 +351,7 @@ img {
     padding-top: max(0.75rem, calc(var(--space-lg) - 1cm));
   }
 
-  /* Ab Projects: je 1 cm mehr Abstand zwischen aufeinanderfolgenden Sektionen */
+  /* From projects onward: +1cm spacing between consecutive sections */
   #main .section-projects ~ .section {
     padding-top: calc(var(--space-2xl) + 1cm);
   }
@@ -371,7 +377,7 @@ img {
   margin-bottom: var(--space-md);
 }
 
-/* Abstand Tools ↔ Study Specializations = Abstand zwischen Skill-Zeilen (netto unter Berücksichtigung des Rows-Paddings) */
+/* Tools ↔ Study Specializations gap = gap between skill rows (net of row padding) */
 .section-skills {
   --skills-rows-gap: clamp(2rem, 4.2vw, 3.1rem);
   --skills-rows-padding-y: clamp(1.1rem, 2.2vw, 1.6rem);
@@ -550,7 +556,7 @@ img {
   .hero-inner {
     justify-content: center;
     padding-top: 0;
-    /* Gesamtpaket nur visuell im Hero verschieben; Document-Flow / Folgesektionen unverändert */
+    /* Shift hero block visually only; document flow / following sections unchanged */
     transform: translateY(calc(-3cm + 1cm));
   }
 }
@@ -613,7 +619,7 @@ img {
   }
 }
 
-/* Schmal/tablet: Text → Bild → Buttons (Wrapper wirkt nicht als Box) */
+/* Narrow / tablet: text → image → buttons (wrapper uses display:contents) */
 @media (max-width: 899px) {
   .hero-lead-column {
     display: contents;
@@ -860,7 +866,7 @@ img {
   border-bottom: none;
 }
 
-/* Kurz über mich: Text + rechteckige Bild-Collage (ohne Kachel-Rahmen) */
+/* About me: text + rectangular photo collage (no tile frames) */
 .about-with-collage {
   display: grid;
   gap: var(--space-xl);
@@ -1559,7 +1565,7 @@ img {
   width: 100%;
 }
 
-/* Intro: gleicher Blockfluss wie .case-section (Titel → Untertitel → .case-prose mit Medien) */
+/* Intro: same block flow as .case-section (title → subtitle → .case-prose with media) */
 .case-intro {
   display: block;
 }
@@ -1591,7 +1597,7 @@ img {
   color: #8a8a8f;
 }
 
-/* Projekt-Metadaten am Seitenende: Vierer-Raster 2×2 (5. Zeile volle Breite) */
+/* Project metadata at page end: 2×2 grid (fifth row full width) */
 .case-project-meta {
   max-width: 56rem;
   margin-left: auto;
@@ -1670,7 +1676,7 @@ img {
   border-radius: 0.35rem;
 }
 
-/* Fließtext auf Projektseiten: eine gemeinsame „Lesespalte“ (Intro + alle Abschnitte) */
+/* Case body copy: one shared reading column (intro + all sections) */
 .case-body {
   max-width: none;
 }
@@ -1679,7 +1685,7 @@ img {
   margin: var(--case-caption-to-next) 0 0;
 }
 
-/* Wenn die Hero-Caption den Abstand nach unten schon liefert, kein zweites xl stapeln */
+/* If hero caption already provides bottom spacing, do not stack a second xl gap */
 .case-intro:has(.case-caption)+.case-intro-text {
   margin-top: 0;
 }
@@ -1717,7 +1723,7 @@ img {
 }
 
 .case-subtitle {
-  /* Gleicher vertikaler Rhythmus wie vor Medien in der Prose (Outcome) */
+  /* Same vertical rhythm as before media in prose (outcome) */
   margin: 0 0 var(--case-caption-to-next);
   font-size: clamp(1.4rem, 2.5vw, 2.1rem);
   font-weight: 600;
@@ -1734,7 +1740,7 @@ img {
   border-radius: 0;
 }
 
-/* Intro-Hero nutzt dieselbe Medien-Caption-Kette wie in den Abschnitten */
+/* Intro hero uses the same media → caption rhythm as sections */
 .case-intro .case-body.case-prose {
   margin-top: 0;
 }
@@ -1914,7 +1920,7 @@ img {
   border-radius: var(--radius-sm);
 }
 
-/* Unsichtbarer Platzhalter: gleiche Grid-Spalte wie klickbarer Pfeil → „All projects“ bleibt mittig */
+/* Invisible spacer: same grid column as clickable arrow → “All projects” stays centered */
 .case-footer-arrow--mute {
   visibility: hidden;
   pointer-events: none;
@@ -1943,7 +1949,7 @@ img {
   position: relative;
 }
 
-/* Zentrierter Leitstrich (nutzt volle Containerbreite wie andere Sektionen) */
+/* Centered rule line (full container width like other sections) */
 .timeline::before {
   content: "";
   position: absolute;
@@ -2036,7 +2042,7 @@ img {
   max-width: none;
 }
 
-/* Schmal: Leitstrich links, alle Kästen rechts (Lesbarkeit) */
+/* Narrow: rule on the left, all boxes on the right (readability) */
 @media (max-width: 767px) {
   .timeline::before {
     left: 7px;
@@ -2156,19 +2162,26 @@ img {
   color: var(--accent);
 }
 
-/* —— Smartphone (max-width: 767px): layout & Lesbarkeit — Breakpoint-Übersicht oben nach :root —— */
+/* —— Phone (max-width: 767px): layout & readability — see breakpoint block after :root —— */
 @media (max-width: 767px) {
   /*
-   * iOS / Android: sichtbare „Frame“-Höhe (Browser-UI, Notch) + kein seitlicher Overflow.
-   * 100dvh = dynamische UI-Leiste; 100vh / -webkit-fill-available = Fallback ältere WebKit.
+   * iOS / Android: visible “frame” height (browser chrome, notch) + no horizontal overflow.
+   * 100dvh = dynamic UI bar; 100vh / -webkit-fill-available = fallback for older WebKit.
    */
   html {
-    height: 100%;
+    min-height: 100%;
+    min-height: 100dvh;
+    /* Mobile only: flat white page background (desktop keeps gradient + drift on html) */
+    background-color: #ffffff;
+    background-image: none;
+    background-size: auto;
+    animation: none;
+    /* fixed + iOS often breaks gradient continuity; scroll = one continuous sweep with the document */
+    background-attachment: scroll;
   }
 
   body {
     font-size: 1rem;
-    background-attachment: scroll;
     min-height: 100%;
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -2181,6 +2194,7 @@ img {
     width: 100%;
     max-width: 100%;
     overflow-x: clip;
+    background: transparent;
   }
 
   .container,
@@ -2201,6 +2215,9 @@ img {
 
   .mobile-nav {
     padding-bottom: max(var(--space-md), env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .mobile-nav a {
@@ -2228,6 +2245,7 @@ img {
 
   .section {
     padding: var(--space-xl) 0;
+    background: transparent;
   }
 
   .section-projects {
@@ -2239,8 +2257,8 @@ img {
   }
 
   /*
-   * Hero (Mobil): eigener Aufbau — kein Viewport-Zwang, kein overflow-clip,
-   * damit Schriftzug und Bild nie angeschnitten werden (Desktop .hero unverändert).
+   * Hero (mobile): separate build — no forced viewport, no overflow clip,
+   * so headline and image are never cropped (desktop .hero unchanged).
    */
   .hero {
     overflow: visible;
@@ -2397,8 +2415,8 @@ img {
   }
 
   /*
-   * About-Collage (Mobil): horizontales Snap-Karussell statt dichter Raster-Zellen —
-   * gleiche Bildausschnitte, object-position oben → Köpfe seltener abgeschnitten.
+   * About collage (mobile): horizontal snap carousel instead of dense grid cells —
+   * same crops, object-position top → heads cropped less often.
    */
   .about-collage-widget {
     display: flex;

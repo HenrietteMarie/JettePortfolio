@@ -1,7 +1,131 @@
 (function () {
   "use strict";
 
-  /* Responsive (gleiche Logik wie CSS): Smartphone ≤767px; Hauptnavigation ab 768px; Desktop-Layout ab 900px. */
+  /* Warm the image cache early (same assets on desktop and mobile; case pages use ../ paths). */
+  function encodeAssetPathForUrl(fullPath) {
+    var q = fullPath.indexOf("?");
+    var pathOnly = q === -1 ? fullPath : fullPath.slice(0, q);
+    var query = q === -1 ? "" : fullPath.slice(q);
+    return pathOnly
+      .split("/")
+      .map(function (seg) {
+        return encodeURIComponent(seg);
+      })
+      .join("/") + query;
+  }
+
+  function assetPrefix() {
+    return document.body.classList.contains("page-case") ? "../" : "";
+  }
+
+  function preloadImageHref(href, fetchPriority) {
+    var link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = href;
+    if (fetchPriority) {
+      link.setAttribute("fetchpriority", fetchPriority);
+    }
+    document.head.appendChild(link);
+  }
+
+  var COLLAGE_IMAGES = [
+    "images/collage/collage-01.png",
+    "images/collage/collage-02.png",
+    "images/collage/collage-03.png",
+    "images/collage/collage-04.png",
+    "images/collage/collage-05.png",
+    "images/collage/collage-11.png",
+    "images/collage/collage-waschbaer.png",
+    "images/collage/collage-08.png",
+    "images/collage/collage-09.png",
+    "images/collage/collage-16.png",
+    "images/collage/collage-06.png",
+    "images/collage/collage-12.png",
+    "images/collage/collage-13.png",
+    "images/collage/collage-tshirt.png",
+    "images/collage/collage-15.png",
+    "images/collage/collage-19.png"
+  ];
+
+  var PRELOAD_HOME_IMAGES = [
+    "images/hero-henriette.png",
+    "images/portrait-placeholder.svg",
+    "images/banner1.png",
+    "images/IKS/Banner.png?v=1",
+    "images/Invention/Mockup_Invention.jpg?v=2",
+    "images/Application Redesign/chatgpt-main-banner.png?v=2"
+  ].concat(COLLAGE_IMAGES);
+
+  var PRELOAD_BY_CASE = {
+    "gesundheits-app-onboarding.html": [
+      "images/Application Design/Eltern vs. Kinder Dashboard.png",
+      "images/Application Design/process.png?v=2",
+      "images/Application Design/4_Mockup.jpg",
+      "images/Application Design/6_Mockup_OnBoarding.jpg",
+      "images/Application Design/5_Mockup_Ranking.jpg",
+      "images/Application Design/8_Mockup_Wochenru\u0308ckblick.jpg",
+      "images/Application Design/7_Mockup_Wissen.jpg"
+    ],
+    "chatgpt-redesign.html": [
+      "images/Application Redesign/Mockupframe.png",
+      "images/Application Redesign/Wireframes.png",
+      "images/Application Redesign/chatgpt-main-banner.png?v=2",
+      "images/Application Redesign/Quellen.jpg",
+      "images/Application Redesign/Canvas1.jpg",
+      "images/Application Redesign/Canvas2.jpg",
+      "images/Application Redesign/Ra\u0308ume1.jpg",
+      "images/Application Redesign/Ra\u0308ume2.jpg",
+      "images/Application Redesign/Quickchat.jpg",
+      "images/Application Redesign/Bibliothek.png"
+    ],
+    "design-system-b2b.html": [
+      "images/IKS/01_image.png?v=3",
+      "images/IKS/02_image.png?v=3",
+      "images/IKS/04_image.png?v=4",
+      "images/IKS/iks-outcome-2.png?v=3",
+      "images/IKS/foam.png?v=5",
+      "images/IKS/Bildschirmfoto 2026-04-27 um 23.17.57.png?v=4",
+      "images/IKS/iks-outcome-5.png?v=3",
+      "images/IKS/iks-outcome-6.png?v=3"
+    ],
+    "service-blueprint.html": [
+      "images/Invention/problem.png",
+      "images/Invention/research.png",
+      "images/Invention/Swipe to sort.png",
+      "images/Invention/Ansichten.png",
+      "images/Invention/Cluster.png"
+    ]
+  };
+
+  function runCriticalImagePreloads() {
+    if (!document.head || !document.body) return;
+    var prefix = assetPrefix();
+    var isCase = document.body.classList.contains("page-case");
+    var path = window.location.pathname || "";
+    var segments = path.split("/").filter(Boolean);
+    var file = segments.length ? segments[segments.length - 1] : "index.html";
+
+    var rawList = [];
+    if (!isCase) {
+      rawList = PRELOAD_HOME_IMAGES;
+    } else if (PRELOAD_BY_CASE[file]) {
+      rawList = PRELOAD_BY_CASE[file];
+    }
+
+    if (!rawList.length) return;
+
+    var highBudget = isCase ? 3 : 5;
+    rawList.forEach(function (raw, i) {
+      var href = prefix + encodeAssetPathForUrl(raw);
+      var priority = i < highBudget ? "high" : "low";
+      preloadImageHref(href, priority);
+    });
+  }
+
+  runCriticalImagePreloads();
+
+  /* Responsive (same breakpoints as CSS): phone ≤767px; main nav from 768px; desktop layout from 900px. */
 
   var header = document.querySelector(".site-header");
   var navToggle = document.querySelector(".nav-toggle");
