@@ -1419,12 +1419,11 @@ img {
 }
 
 .project-preview--chatgpt-raume1 {
-  /* NFC ä in filename — same as git index for cross-host compatibility */
-  background-image: url("../images/Application%20Redesign/Ra%c3%a4ume1.jpg");
+  background-image: url("../images/Application%20Redesign/chatgpt-rooms-1.png");
 }
 
 .project-preview--chatgpt-raume2 {
-  background-image: url("../images/Application%20Redesign/Ra%c3%a4ume2.jpg");
+  background-image: url("../images/Application%20Redesign/chatgpt-rooms-2.png");
 }
 
 .project-preview--chatgpt-quickchat {

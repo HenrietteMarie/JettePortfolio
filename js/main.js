@@ -74,8 +74,8 @@
       "images/Application Redesign/Quellen.jpg",
       "images/Application Redesign/Canvas1.jpg",
       "images/Application Redesign/Canvas2.jpg",
-      "images/Application Redesign/R\u00e4ume1.jpg",
-      "images/Application Redesign/R\u00e4ume2.jpg",
+      "images/Application Redesign/chatgpt-rooms-1.png",
+      "images/Application Redesign/chatgpt-rooms-2.png",
       "images/Application Redesign/Quickchat.jpg",
       "images/Application Redesign/Bibliothek.png"
     ],
