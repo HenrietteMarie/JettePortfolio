@@ -64,7 +64,7 @@
       "images/Application Design/4_Mockup.jpg",
       "images/Application Design/6_Mockup_OnBoarding.jpg",
       "images/Application Design/5_Mockup_Ranking.jpg",
-      "images/Application Design/8_Mockup_Wochenru\u0308ckblick.jpg",
+      "images/Application Design/8_Mockup_Wochenr\u00fcckblick.jpg",
       "images/Application Design/7_Mockup_Wissen.jpg"
     ],
     "chatgpt-redesign.html": [
@@ -74,8 +74,8 @@
       "images/Application Redesign/Quellen.jpg",
       "images/Application Redesign/Canvas1.jpg",
       "images/Application Redesign/Canvas2.jpg",
-      "images/Application Redesign/Ra\u0308ume1.jpg",
-      "images/Application Redesign/Ra\u0308ume2.jpg",
+      "images/Application Redesign/R\u00e4ume1.jpg",
+      "images/Application Redesign/R\u00e4ume2.jpg",
       "images/Application Redesign/Quickchat.jpg",
       "images/Application Redesign/Bibliothek.png"
     ],

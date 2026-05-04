@@ -1258,7 +1258,8 @@ img {
 }
 
 .project-preview--mockup-8-weekly-review {
-  background-image: url("../images/Application%20Design/8_Mockup_Wochenru%CC%88ckblick.jpg");
+  /* NFC ü in filename (matches git / Linux checkout; NFD %CC%88 broke direct loads on some hosts) */
+  background-image: url("../images/Application%20Design/8_Mockup_Wochenr%c3%bcckblick.jpg");
 }
 
 .project-preview--mockup-7-wissen {
@@ -1418,11 +1419,12 @@ img {
 }
 
 .project-preview--chatgpt-raume1 {
-  background-image: url("../images/Application%20Redesign/Ra%CC%88ume1.jpg");
+  /* NFC ä in filename — same as git index for cross-host compatibility */
+  background-image: url("../images/Application%20Redesign/Ra%c3%a4ume1.jpg");
 }
 
 .project-preview--chatgpt-raume2 {
-  background-image: url("../images/Application%20Redesign/Ra%CC%88ume2.jpg");
+  background-image: url("../images/Application%20Redesign/Ra%c3%a4ume2.jpg");
 }
 
 .project-preview--chatgpt-quickchat {
