@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
   <meta name="description" content="Case Study: Health App Onboarding — Henriette Finzel, Interaction Designer." />
   <title>Health App Onboarding — Henriette Finzel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -164,9 +165,11 @@
       </dl>
     </section>
 
-    <div class="case-footer-nav">
-      <a class="btn btn-primary" href="design-system-b2b.html">Next project</a>
-    </div>
+    <nav class="case-footer-nav" aria-label="Case study navigation">
+      <span class="case-footer-arrow case-footer-arrow--mute" aria-label="No previous project">←</span>
+      <a class="btn btn-ghost case-footer-all" href="../index.html#projects">All projects</a>
+      <a class="case-footer-arrow btn btn-ghost" href="design-system-b2b.html" aria-label="Next project">→</a>
+    </nav>
   </main>
 
   <script src="../js/main.js"></script>
